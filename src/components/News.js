@@ -46,19 +46,23 @@ export class News extends Component {
   //Refactoring news componenet by making function to make fetch calls
 
   async updateNews(){
+    this.props.setProgress(20);
     let url =
       `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=f1134af9a2da439e8aaa37cda9871392&page=${this.state.page}&pageSize=${this.props.pageSize}`;
 
     // this.setState({loading: true});
 
     let fetchedData = await fetch(url); 
+    this.props.setProgress(50);
     let parsedData = await fetchedData.json();
+    this.props.setProgress(80);
 
     this.setState({
       articles: parsedData.articles,
       totalResults: parsedData.totalResults,
       loading: false
     });
+    this.props.setProgress(100);
   }
 
   fetchMoreData = async () => {
