@@ -39,6 +39,19 @@ const App = () => {
               />
             }
           ></Route>
+          <Route
+            key="home"
+            exact
+            path="/newsMonk"
+            element={
+              <News
+                setProgress={setProgress}
+                pageSize={pgSize}
+                country="in"
+                category="general"
+              />
+            }
+          ></Route>
 
           <Route
             exact
@@ -90,7 +103,7 @@ const App = () => {
             element={
               <News
                 setProgress={setProgress}
-                key="science"
+                key="science"n
                 pageSize={pgSize}
                 country="in"
                 category="science"
